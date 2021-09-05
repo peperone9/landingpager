@@ -1,0 +1,288 @@
+:root {
+  --primary-color: #0a1128;
+  --white: white;
+  --light-gray-color: #eeeeee;
+  --secoundary-color: crimson;
+  --gap: 2rem;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html {
+  font-size: 62.5%;
+  scroll-behavior: smooth;
+}
+body {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 2rem;
+  color: var(--primary-color);
+  line-height: 1.5;
+}
+/* SETANDO TAMANHO DOS TITULOS*/
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Montserrat', sans-serif;
+}
+
+h1 {
+  font-size: 6rem;
+  text-transform: uppercase;
+}
+
+h2 {
+  font-size: 5.5rem;
+}
+
+h3 {
+  font-size: 5rem;
+}
+
+h4 {
+  font-size: 4.5rem;
+}
+
+h5 {
+  font-size: 4rem;
+}
+
+h6 {
+  font-size: 3.5rem;
+}
+
+a {
+  text-decoration: none;
+}
+
+p {
+  margin-bottom: 3rem;
+}
+
+.responsive-table {
+  overflow: hidden;
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  background: #a7a7a7;
+  color: black;
+  border-radius: 13%;
+  border-spacing: 0;
+  border-collapse: collapse;
+  box-shadow: 0.3rem 0.3rem rgb(0, 0, 0);
+}
+
+table caption {
+  color: white;
+  font-style: italic;
+  text-align: left;
+  margin-bottom: 1rem;
+  font-weight: normal;
+}
+
+tbody {
+  background: var(--light-gray-color);
+}
+
+/* Background*/
+.main-bg {
+  background-image: url('../_img/main-bg.svg');
+  background-size: cover;
+  background-position: center center;
+  color: white;
+}
+
+.white-bg {
+  background: var(--white);
+  color: var(--primary-color);
+}
+
+/* Conteudo*/
+.main-content {
+  max-width: 120rem;
+  margin: 8rem auto;
+}
+
+.section {
+  min-height: 100vh;
+}
+
+/* BARRA DE NAVEGAÇÃO*/
+.menu {
+  background: var(--white);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  border-bottom: 0.1rem solid var(--light-gray-color);
+  z-index: 2; /* Mantem o menu acima de todos os outros elementos*/
+}
+
+.menu-content {
+  max-width: 120rem;
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto;
+  align-items: center;
+  padding-bottom: 0;
+  padding-top: 0;
+}
+
+.menu h1 {
+  font-size: 2.3rem;
+}
+
+.menu h1 a {
+  color: inherit;
+}
+
+.menu ul {
+  list-style-type: none;
+  display: flex;
+}
+
+.menu ul li a {
+  display: block;
+  padding: 2rem;
+  font-size: 1.8rem;
+  position: relative;
+  color: var(--primary-color);
+}
+
+/* Criando um elemento after pra fazer um efeito de transição no menu*/
+.menu ul li a::after {
+  content: '';
+  position: absolute;
+  bottom: 1rem;
+  left: 50%; /* Faz com que a transição va do meio pras laterais*/
+  width: 0;
+  height: 0.2rem;
+  background: var(--secoundary-color);
+  transition: all 300ms ease-in-out; /* EFEITO DE TRANSIÇÃO*/
+}
+
+/* Quando passar o mouse por cima a barrinha vai carregando*/
+.menu ul li a:hover::after {
+  width: 50%;
+  left: 25%; /* Faz com que a transição COMECE DO MEIO*/
+}
+
+.menu-space {
+  height: 6.5rem;
+}
+
+/* ============ INTRO ============= */
+.intro-content {
+  position: relative;
+  top: -8rem;
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: var(--gap);
+  min-height: 100vh;
+}
+
+.intro-text-content,
+.intro-img {
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: center;
+}
+
+.intro-text-content h2 {
+  font-size: 6rem;
+  margin-bottom: 5rem;
+  text-transform: uppercase;
+  line-height: 1.2;
+}
+
+.intro-img img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* ============== TOP 3 JOBS ============= */
+.top3-content {
+  max-width: 64rem;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  min-height: 100vh;
+  text-align: center;
+}
+
+.top3-content h2 {
+  margin-bottom: 5rem;
+}
+
+/* GRID DA TOP 3 JOBS*/
+
+.grid-one-content {
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: center;
+  align-content: center;
+  min-height: 100vh;
+}
+
+.grid-main-heading {
+  margin-bottom: 1rem;
+}
+
+.grid-description {
+  padding-bottom: 5rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--gap);
+  counter-reset: grid-counter;
+}
+
+.grid h3 {
+  font-size: 3rem;
+  position: relative; /* Definindo relativo pro pseudoelemento ficar absoluto*/
+  left: 4.5rem; /* Deslocamento*/
+  padding-left: 4rem; /* espaçamento*/
+  padding-bottom: 3rem;
+}
+/*Colocando os numeros dos top3 com um contador */
+.grid h3::before {
+  counter-increment: grid-counter; /* Inicia o contador*/
+  content: counter(
+    grid-counter
+  ); /* Faz com que o elemento apareça antes do titulo*/
+  position: absolute;
+  font-size: 7rem;
+  font-style: italic;
+  top: -3.5rem; /* Colocando ele acima dos titulos*/
+  left: -2rem;
+  transform: rotate(5deg); /* Roda o texto um pouquinho no sentido horario */
+}
+
+/* ========== GALERIA =========== */
+
+.gallery-img {
+  width: 100%;
+  max-width: 36rem;
+  max-height: 36rem;
+  overflow: hidden;
+}
+
+.gallery-img img {
+  transition: all 300ms ease-in-out;
+}
+/* Faz o efeito de aumento na imagem*/
+.gallery-img img:hover {
+  transform: translate(-3%, 3%) scale(1.1) rotate(5deg); /* Efeito de transição da imagem*/
+}
+
+/* TABELA DE PREÇOS*/
